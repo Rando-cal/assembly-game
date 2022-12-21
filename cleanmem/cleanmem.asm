@@ -18,7 +18,7 @@ Start:          ; labels to memory address. NOT indented will go to F000
     ; start with FF and decrement to zero
     lda #0      ; A = 0
     ldx #$FF    ; X is counter of loop.  X = #$FF  ==>>> So A reg has 0 , X has $FF, and S has $FF
-    sta $FF     ; make sure $FF is zeroed before the loop starts since it Decrements then zeros...
+    sta $FF     ; make sure $FF is zeroed before the loop starts since it Decrements then zeros...stella
 
 MemLoop:        ; start with $FF and make is a Zero, go down to $FE and make zero, goto $FD and make zero...
     dex         ; X--  (de)crement X

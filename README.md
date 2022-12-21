@@ -20,4 +20,22 @@ With PS point stack if letter is Uppercase it is N negative, n is not-negative. 
 
 Note:
 
-When we power-up or reset the Atari 2600, that sets the RESET pin on the 6507 processor. The 6502 CPU (or 6507 in our case) is designed to always initialize and load the PC register (program counter) with the address that is in inside memory positions $FFFC and $FFFD (two bytes).
+When we power-up or reset the Atari 2600, that sets the RESET pin on the 6507 processor. The 6502 CPU (or 6507 in our case) is designed to always initialize and load the PC register (program counter) with the address that is in inside memory positions $FFFC and $FFFD (two bytes)
+
+
+
+
+Boilerplate:
+
+    processor 6502
+    seg Code        ; define a new seg named "Code"\
+    org #F000       ; define the origin of hte ROM code at mem address $F000
+
+Start:
+
+        ; body of code here
+
+
+    org $FFFC       ; end the ROM by adding required values to the mmeory position $FFFC
+    .word Start     ; put 2 bytes with the reset address at memory postiion $FFFC
+    .word Start     ; put 2 bytes with the break address at memory position $FFFE
